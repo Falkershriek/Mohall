@@ -112,7 +112,7 @@ namespace Mohall
         /// <returns>True if player selected a door with a reward, false if player selected an empty door</returns>
         private bool DidPlayerSelectReward()
         {
-            var door = doorBtns.Find(door => door.IsSelected);
+            DoorBtn? door = doorBtns.Find(door => door.IsSelected);
             return door != null && door.HasReward;
         }
 
@@ -230,7 +230,7 @@ namespace Mohall
         }
 
         /// <summary>
-        /// Contains the values used for the creation of door buttons
+        /// Contains the values used for the creation of door buttons.
         /// </summary>
         private class DoorBtn : Button
         {
