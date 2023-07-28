@@ -14,10 +14,10 @@ You are presented with three doors. Behind one of the doors is a reward. There's
 The question is: does changing your choice in step 3. give you an advantage?
 
 <details> 
-  <summary>Answer</summary>
-	While it might seem like it shouldn't matter whether you swap the doors at the end or not, swapping once one of the empty doors is opened does give you an advantage.
+<summary>Answer</summary>
+While it might seem like it shouldn't matter whether you swap the doors at the end or not, swapping once one of the empty doors is opened does give you an advantage.
 	
-	To explain it: In the beginning, you have a 1:3 chance of picking right and a 2:3 chance of picking wrong. If you pick an empty door, which happens 2/3 of the time, there remains only one empty door that can possibly be opened in step 2., in which case the remaining closed door will be the reward door. If you then swap your choice, you choose the reward door. Thus, to summarize, if you *always* swap, you turn your 2:3 chance to lose into a 2:3 chance to win because whenever you choose the wrong door initially (which happens 2:3 of the time), the only door you can swap to is the correct door.
+To explain it: In the beginning, you have a 1:3 chance of picking right and a 2:3 chance of picking wrong. If you pick an empty door, which happens 2/3 of the time, there remains only one empty door that can possibly be opened in step 2., in which case the remaining closed door will be the reward door. If you then swap your choice, you choose the reward door. Thus, to summarize, if you *always* swap, you turn your 2:3 chance to lose into a 2:3 chance to win because whenever you choose the wrong door initially (which happens 2:3 of the time), the only door you can swap to is the correct door.
 </details>
 
 ## Differences between Mohall and the original Monty Hall problem
