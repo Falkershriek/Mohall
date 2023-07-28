@@ -347,7 +347,7 @@ namespace Mohall
             continue_button.Margin = new Padding(4);
             continue_button.Name = "continue_button";
             continue_button.Size = new Size(490, 50);
-            continue_button.TabIndex = 3;
+            continue_button.TabIndex = 6;
             continue_button.Text = "Continue";
             continue_button.UseVisualStyleBackColor = true;
             continue_button.Enabled = false;
@@ -355,12 +355,12 @@ namespace Mohall
             // 
             // directions_label
             // 
-            directions_label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            directions_label.Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top;
             directions_label.Location = new Point(13, 171);
             directions_label.Margin = new Padding(4);
             directions_label.Name = "directions_label";
             directions_label.Size = new Size(490, 80);
-            directions_label.TabIndex = 4;
+            directions_label.TabIndex = 5;
             directions_label.Text = "empty";
             directions_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
@@ -374,14 +374,14 @@ namespace Mohall
             doors_panel.Margin = new Padding(4);
             doors_panel.Name = "doors_panel";
             doors_panel.Size = new Size(490, 150);
-            doors_panel.TabIndex = 6;
+            doors_panel.TabIndex = 4;
             // 
             // door3
             // 
             door3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             door3.Location = new Point(315, 10);
             door3.Name = "door3";
-            door3.TabIndex = 7;
+            door3.TabIndex = 3;
             door3.Text = "3";
             door3.Click += door_Click;
             // 
@@ -390,7 +390,7 @@ namespace Mohall
             door2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             door2.Location = new Point(195, 10);
             door2.Name = "door2";
-            door2.TabIndex = 6;
+            door2.TabIndex = 2;
             door2.Text = "2";
             door2.Click += door_Click;
             // 
@@ -399,7 +399,7 @@ namespace Mohall
             door1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             door1.Location = new Point(75, 10);
             door1.Name = "door1";
-            door1.TabIndex = 5;
+            door1.TabIndex = 1;
             door1.Text = "1";
             door1.Click += door_Click;
             // 
