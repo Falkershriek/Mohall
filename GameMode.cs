@@ -1,6 +1,6 @@
 namespace Mohall
 {
-    public partial class GameMode : Form
+    public class GameMode : Form
     {
         public GameMode()
         {
@@ -25,6 +25,7 @@ namespace Mohall
         /// </summary>
         private GameStage CurrentStage = GameStage.Stage0;
 
+        private readonly Button exit_button = new();
         private readonly Button continue_button = new();
         private readonly Label directions_label = new();
         private readonly Panel doors_panel = new();
@@ -186,6 +187,17 @@ namespace Mohall
             foreach (DoorBtn doorBtn in doorBtns) doorBtn.IsSelected = false;
         }
 
+
+        /// <summary>
+        /// Closes the window
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void exit_button_Click(object? sender, EventArgs e)
+        {
+            Close();
+        }
+
         /// <summary>
         /// Continues the game by advancing to the next game stage and updating the game's elements.
         /// </summary>
@@ -316,6 +328,18 @@ namespace Mohall
             doors_panel.SuspendLayout();
             SuspendLayout();
             // 
+            // exit_button
+            // 
+            exit_button.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            exit_button.Location = new Point(13, 317);
+            exit_button.Margin = new Padding(4);
+            exit_button.Name = "exit_button";
+            exit_button.Size = new Size(490, 50);
+            exit_button.TabIndex = 7;
+            exit_button.Text = "Exit";
+            exit_button.UseVisualStyleBackColor = true;
+            exit_button.Click += exit_button_Click;
+            // 
             // continue_button
             // 
             continue_button.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -383,10 +407,12 @@ namespace Mohall
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(516, 322);
+            ClientSize = new Size(516, 380);
+            MinimumSize = new Size(516, 411);
             Controls.Add(doors_panel);
             Controls.Add(directions_label);
             Controls.Add(continue_button);
+            Controls.Add(exit_button);
             Name = "GameMode";
             StartPosition = FormStartPosition.WindowsDefaultBounds;
             Text = "Game Mode";
