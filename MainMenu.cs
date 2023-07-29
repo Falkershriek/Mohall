@@ -122,7 +122,6 @@ namespace Mohall
             public MenuButton()
             {
                 Anchor = AnchorStyles.Left | AnchorStyles.Right;
-                //Margin = new Padding(4);
                 Size = new Size(490, 50);
                 UseVisualStyleBackColor = true;
             }
@@ -189,7 +188,6 @@ namespace Mohall
             statistics_button.Name = "statistics_button";
             statistics_button.TabIndex = 3;
             statistics_button.Text = "Statistics";
-            //statistics_button.Enabled = false;
             statistics_button.Click += statistics_button_Click;
             //
             // simulate_button
