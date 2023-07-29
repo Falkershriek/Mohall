@@ -11,8 +11,9 @@ namespace Mohall
             InitializeMainMenu();
         }
 
-        private readonly Statistics gameStatistics = new();
-
+        //
+        // Interface elements
+        //
         private readonly MenuButton exit_button = new();
         private readonly MenuButton statistics_button = new();
         private readonly MenuButton simulate_button = new();
@@ -34,7 +35,7 @@ namespace Mohall
         }
 
         /// <summary>
-        /// Closes the statistics panel and re-opens the main menu panel inside the main menu window.
+        /// Closes the statistics panel and re-opens the main mainMenu panel inside the main mainMenu window.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -45,7 +46,7 @@ namespace Mohall
         }
 
         /// <summary>
-        /// Hides the main menu panel and opens the game statistics panel inside the main menu window.
+        /// Hides the main mainMenu panel and opens the game statistics panel inside the main mainMenu window.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -82,7 +83,7 @@ namespace Mohall
         }
 
         /// <summary>
-        /// Contains the values used for the creation of menu buttons.
+        /// Contains the values used for the creation of mainMenu buttons.
         /// </summary>
         private class MenuButton : Button
         {
@@ -125,7 +126,7 @@ namespace Mohall
             back_to_menu_button.Location = new Point(0, 116);
             back_to_menu_button.Name = "back_to_menu_button";
             back_to_menu_button.TabIndex = 6;
-            back_to_menu_button.Text = "Back to menu";
+            back_to_menu_button.Text = "Back to mainMenu";
             back_to_menu_button.Click += back_to_menu_button_Click;
             // 
             // statistics_label

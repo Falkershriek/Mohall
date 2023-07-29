@@ -17,7 +17,7 @@ namespace Mohall
         private readonly LiteDatabase statisticsDB;
         private readonly ILiteCollection<GameEntry> gamesCol;
 
-        public void AddGame(GameEntry gameToAdd)
+        public void AddEntry(GameEntry gameToAdd)
         {
             gamesCol.Insert(gameToAdd);
         }
@@ -61,8 +61,8 @@ namespace Mohall
         public bool PlayerSwapped { get; set; }
         public bool PlayerWon { get; set; }
         public int RewardDoor { get; set; }
-        public int FirstPlayerChoice { get; set; }
-        public int FinalPlayerChoice { get; set; }
+        public int FirstChoice { get; set; }
+        public int FinalChoice { get; set; }
 
     }
 }

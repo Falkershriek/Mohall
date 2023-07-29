@@ -7,6 +7,17 @@ namespace Mohall
             InitializeGame();
         }
 
+        //
+        // Interface elements
+        //
+        private readonly Button exit_button = new();
+        private readonly Button continue_button = new();
+        private readonly Label directions_label = new();
+        private readonly Panel doors_panel = new();
+        private readonly DoorBtn door1 = new();
+        private readonly DoorBtn door2 = new();
+        private readonly DoorBtn door3 = new();
+
         /// <summary>
         /// Contains values for the possible game stages.
         /// </summary>
@@ -23,7 +34,7 @@ namespace Mohall
         /// <summary>
         /// Contains value of the current game stage.
         /// </summary>
-        private GameStage CurrentStage = GameStage.Stage0;
+        private GameStage currentGameStage = GameStage.Stage0;
 
         private readonly Button exit_button = new();
         private readonly Button continue_button = new();
@@ -44,7 +55,7 @@ namespace Mohall
         /// </summary>
         private void AdvanceGameStage()
         {
-            CurrentStage = (CurrentStage < GameStage.Stage5) ? CurrentStage + 1 : GameStage.Stage0;
+            currentGameStage = (currentGameStage < GameStage.Stage5) ? currentGameStage + 1 : GameStage.Stage0;
         }
 
         /// <summary>
@@ -54,7 +65,7 @@ namespace Mohall
         {
             UpdateDirectionsLabel();
 
-            switch (CurrentStage)
+            switch (currentGameStage)
             {
                 case GameStage.Stage0:
                     ResetAllControls();
@@ -94,14 +105,14 @@ namespace Mohall
         /// <returns>String with game directions for the current stage.</returns>
         private string GetCurrentGameDirections()
         {
-            return CurrentStage switch
+            return currentGameStage switch
             {
                 GameStage.Stage0 => "Pick a door. Behind one of the doors is a reward. The other two doors are empty.",
                 GameStage.Stage1 => "You can change your choice if you wish. Press \"Continue\" when you're ready.",
                 GameStage.Stage2 => "From the remaining doors, I will now open one that contains no reward.",
                 GameStage.Stage3 => "Next, the remaining doors will be opened. However, before that happens, I will allow you to change your choice. If you want to, you can pick another door. Once you continue, your choice will become final.",
                 GameStage.Stage4 => "Your choice is now set in stone. Let's open the remaining doors!",
-                GameStage.Stage5 => (DidPlayerSelectReward()) ? "Congratulations, you've won the reward!" : "You've lost. Better luck next time!",
+                GameStage.Stage5 => (DidPlayerWin()) ? "Congratulations, you've won the reward!" : "You've lost. Better luck next time!",
                 _ => "Something went wrong",
             };
         }
@@ -109,8 +120,8 @@ namespace Mohall
         /// <summary>
         /// Checks whether the player selected a door with a reward
         /// </summary>
-        /// <returns>True if player selected a door with a reward, false if player selected an empty door</returns>
-        private bool DidPlayerSelectReward()
+        /// <returns>True if player selected a door with a reward, false if player selected an empty door.</returns>
+        private bool DidPlayerWin()
         {
             DoorBtn? door = doorBtns.Find(door => door.IsSelected);
             return door != null && door.HasReward;
@@ -220,7 +231,7 @@ namespace Mohall
             {
                 SelectDoor(clickedDoor);
 
-                if (CurrentStage == GameStage.Stage0)
+                if (currentGameStage == GameStage.Stage0)
                 {
                     continue_button.Enabled = true;
                     AdvanceGameStage();
