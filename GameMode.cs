@@ -74,6 +74,7 @@ namespace Mohall
                 case GameStage.Stage1:
                     break;
                 case GameStage.Stage2:
+                    gameEntry.FirstChoice = SelectedDoorNumber();
                     EnableAllDoors(false);
                     break;
                 case GameStage.Stage3:
