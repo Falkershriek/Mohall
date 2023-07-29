@@ -43,7 +43,7 @@ namespace Mohall
         }
 
         private string Ratio(int a, int b)
-        { 
+        {
             int gcd = Gcd(a, b);
             return (a / gcd).ToString() + ":" + (b / gcd).ToString();
         }
@@ -55,7 +55,7 @@ namespace Mohall
         {
             TotalGamesPlayed = gamesCol.Count();
             if (TotalGamesPlayed > 0)
-        {
+            {
                 TotalGamesPlayedWithSwap = gamesCol.Find(x => x.PlayerSwapped).Count();
                 TotalGamesPlayedWithNoSwap = TotalGamesPlayed - TotalGamesPlayedWithSwap;
                 TotalWins = gamesCol.Find(x => x.PlayerWon).Count();
@@ -66,7 +66,7 @@ namespace Mohall
                 RewardsBehindDoor1 = gamesCol.Find(x => x.RewardDoor == 1).Count();
                 RewardsBehindDoor2 = gamesCol.Find(x => x.RewardDoor == 2).Count();
                 RewardsBehindDoor3 = gamesCol.Find(x => x.RewardDoor == 3).Count();
-        }
+            }
         }
     }
 
@@ -74,7 +74,7 @@ namespace Mohall
     /// Class representing a single game entry in the statistics database.
     /// </summary>
     public class GameEntry
-        {
+    {
         public GameEntry()
         {
             SimulatedGame = false;
@@ -83,11 +83,8 @@ namespace Mohall
             RewardDoor = -1;
             FirstChoice = -1;
             FinalChoice = -1;
-    }
+        }
 
-    public class GameEntry
-    {
-        public int Id { get; set; }
         public string? PlayerName { get; set; }
         public bool SimulatedGame { get; set; }
         public bool PlayerSwapped { get; set; }
