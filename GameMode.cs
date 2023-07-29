@@ -132,13 +132,32 @@ namespace Mohall
         }
 
         /// <summary>
-        /// Checks whether the player selected a door with a reward
+        /// Finds the currently selected door.
+        /// </summary>
+        /// <returns>Number of the currently selected door. -1 if no door is selected.</returns>
+        private int SelectedDoorNumber()
+        {
+            int doorIndex = doorBtns.FindIndex(door => door.IsSelected);
+            return (doorIndex >= 0) ? doorIndex + 1 : -1;
+        }
+
+        /// <summary>
+        /// Finds the door with the reward.
+        /// </summary>
+        /// <returns>Number of the door with the reward. -1 if no door has a reward.</returns>
+        private int RewardDoorNumber()
+        {
+            int doorIndex = doorBtns.FindIndex(door => door.HasReward);
+            return (doorIndex >= 0) ? doorIndex + 1 : -1;
+        }
+
+        /// <summary>
+        /// Checks whether the player selected a door with a reward.
         /// </summary>
         /// <returns>True if player selected a door with a reward, false if player selected an empty door.</returns>
         private bool DidPlayerWin()
         {
-            DoorBtn? door = doorBtns.Find(door => door.IsSelected);
-            return door != null && door.HasReward;
+            return SelectedDoorNumber() == RewardDoorNumber();
         }
 
         /// <summary>
