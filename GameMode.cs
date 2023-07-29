@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace Mohall
 {
     public class GameMode : Form
@@ -36,13 +38,10 @@ namespace Mohall
         /// </summary>
         private GameStage currentGameStage = GameStage.Stage0;
 
-        private readonly Button exit_button = new();
-        private readonly Button continue_button = new();
-        private readonly Label directions_label = new();
-        private readonly Panel doors_panel = new();
-        private readonly DoorBtn door1 = new();
-        private readonly DoorBtn door2 = new();
-        private readonly DoorBtn door3 = new();
+        /// <summary>
+        /// Statistics database entry for the current game.
+        /// </summary>
+        private readonly GameEntry gameEntry = new();
 
         /// <summary>
         /// Contains the doors to be chosen from in the game.
@@ -70,6 +69,7 @@ namespace Mohall
                 case GameStage.Stage0:
                     ResetAllControls();
                     RandomlyAssignReward();
+                    gameEntry.RewardDoor = RewardDoorNumber();
                     break;
                 case GameStage.Stage1:
                     break;
@@ -81,14 +81,27 @@ namespace Mohall
                     EnableAllDoors(true);
                     break;
                 case GameStage.Stage4:
+                    gameEntry.FinalChoice = SelectedDoorNumber();
+                    gameEntry.PlayerSwapped = gameEntry.FirstChoice != gameEntry.FinalChoice;
                     EnableAllDoors(false);
                     break;
                 case GameStage.Stage5:
+                    gameEntry.PlayerWon = DidPlayerWin();
+                    AddGameToDatabase();
                     OpenAllDoors();
                     break;
                 default:
                     break;
             }
+        }
+
+        /// <summary>
+        /// Adds the current game to the statistics database.
+        /// </summary>
+        private void AddGameToDatabase()
+        {
+            MainMenu mainMenu = (MainMenu)(this.Owner);
+            mainMenu.AddGameToDatabase(gameEntry);
         }
 
         /// <summary>

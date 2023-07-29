@@ -23,6 +23,49 @@ namespace Mohall
         private readonly MenuButton back_to_menu_button = new();
         private readonly Panel statistics_panel = new();
 
+        private readonly Statistics gameStatistics = new();
+
+        /// <summary>
+        /// Adds the game entry to the statistics database.
+        /// </summary>
+        /// <param name="GameToAdd">Game entry to be added to the database.</param>
+        public void AddGameToDatabase(GameEntry GameToAdd)
+        {
+            gameStatistics.AddEntry(GameToAdd);
+        }
+
+        /// <summary>
+        /// Assembles a string containing statistics of all games in the database.
+        /// </summary>
+        /// <returns>String of statistics of all games in the database.</returns>
+        private string AssembleStatisticsStr()
+        {
+            string statisticsStr;
+            gameStatistics.UpdateStatistics();
+
+            statisticsStr = "Total games played: " + gameStatistics.TotalGamesPlayed.ToString();
+            statisticsStr += "\n";
+            statisticsStr += "Total games won: " + gameStatistics.TotalWins.ToString();
+            statisticsStr += "\n";
+            statisticsStr += "Total games won after swap: " + gameStatistics.TotalWinsAfterSwap.ToString();
+            statisticsStr += "\n";
+            statisticsStr += "Swap win ratio: " + gameStatistics.SwapWinRatio;
+            statisticsStr += "\n";
+            statisticsStr += "No swap win ratio: " + gameStatistics.NoSwapWinRatio;
+            statisticsStr += "\n";
+
+            statisticsStr += "Rewards behind door 1/2/3: " + gameStatistics.RewardsBehindDoor1.ToString() + "/" + gameStatistics.RewardsBehindDoor2.ToString() + "/" + gameStatistics.RewardsBehindDoor3.ToString();
+
+            return statisticsStr;
+        }
+
+        /// <summary>
+        /// Updates the statistics label.
+        /// </summary>
+        private void UpdateStatisticsLabel()
+        {
+            statistics_label.Text = AssembleStatisticsStr();
+        }
 
         /// <summary>
         /// Closes the program.
@@ -55,18 +98,7 @@ namespace Mohall
             menu_buttons_panel.Hide();
             statistics_panel.Show();
 
-            int totplayed = gameStatistics.TotalGamesPlayed();
-            int totwon = gameStatistics.TotalGamesWon();
-            int totwonswap = gameStatistics.TotalGamesWonAfterSwap();
-
-            statistics_label.Text = "Total games played: " + totplayed.ToString();
-            statistics_label.Text += "\n" + "Total games won: " + totwon.ToString();
-            statistics_label.Text += "\n" + "Total games won after swap: " + totwonswap.ToString();
-
-            double swap_win_ratio = (double)gameStatistics.TotalGamesWonAfterSwap() / (double)gameStatistics.TotalGamesWon();
-
-            statistics_label.Text += "\n" + "Swap win ratio: " + swap_win_ratio.ToString("0.##");
-            statistics_label.Text += "\n" + "Rewards behind door 1/2/3: " + gameStatistics.RewardsBehindDoor1().ToString() + "/" + gameStatistics.RewardsBehindDoor2().ToString() + "/" + gameStatistics.RewardsBehindDoor3().ToString();
+            UpdateStatisticsLabel();
         }
 
         /// <summary>
@@ -78,7 +110,7 @@ namespace Mohall
         {
             GameMode gameMode = new();
             Hide();
-            gameMode.ShowDialog();
+            gameMode.ShowDialog(this);
             Show();
         }
 
