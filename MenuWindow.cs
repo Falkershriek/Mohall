@@ -4,9 +4,9 @@ using System.Xml.Linq;
 
 namespace Mohall
 {
-    public class MainMenu : Form
+    public class MenuWindow : Form
     {
-        public MainMenu()
+        public MenuWindow()
         {
             InitializeMainMenu();
         }
@@ -108,7 +108,7 @@ namespace Mohall
         /// <param name="e"></param>
         private void play_button_Click(object? sender, EventArgs e)
         {
-            GameMode gameMode = new();
+            GameWindow gameMode = new();
             Hide();
             gameMode.ShowDialog(this);
             Show();
