@@ -42,17 +42,6 @@
         public List<Door> Doors = new();
 
         /// <summary>
-        /// Number of doors in the game.
-        /// </summary>
-        public int NumberOfDoors
-        {
-            get
-            {
-                return Doors.Count;
-            }
-        }
-
-        /// <summary>
         /// Initializes a new game.
         /// </summary>
         /// <param name="nOfDoors">Number of doors to be created in the new game.</param>
@@ -177,7 +166,7 @@
         private void RandomlyAssignReward()
         {
             Random rnd = new();
-            Door randomDoor = Doors[rnd.Next(0, NumberOfDoors)];
+            Door randomDoor = Doors[rnd.Next(0, Doors.Count)];
 
             randomDoor.HasReward = true;
         }
@@ -197,11 +186,11 @@
         private void RandomlyOpenEmptyUnselectedDoor()
         {
             Random rnd = new();
-            Door currDoor = Doors[rnd.Next(0, NumberOfDoors)];
+            Door currDoor = Doors[rnd.Next(0, Doors.Count)];
 
             while (currDoor.IsSelected || currDoor.IsOpen || currDoor.HasReward)
             {
-                currDoor = Doors[rnd.Next(0, NumberOfDoors)];
+                currDoor = Doors[rnd.Next(0, Doors.Count)];
             }
 
             currDoor.IsOpen = true;

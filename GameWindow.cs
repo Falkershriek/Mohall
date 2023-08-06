@@ -24,7 +24,6 @@ namespace Mohall
         /// Contains the door buttons to be used in the game.
         /// </summary>
         private readonly List<DoorBtn> doorBtns = new();
-        int numberOfDoorBtns = 0;
 
         private readonly Game game = new();
 
@@ -100,7 +99,7 @@ namespace Mohall
         /// </summary>
         private void UpdateDoorBtns()
         {
-            for (int i = 0; i < numberOfDoorBtns; i++)
+            for (int i = 0; i < doorBtns.Count; i++)
             {
                 doorBtns[i].IsEnabled = (game.Doors[i].IsEnabled) ? true : false;
                 doorBtns[i].State = GetDoorState(game.Doors[i]);
@@ -271,7 +270,6 @@ namespace Mohall
             doorBtns.Add(doorBtn1);
             doorBtns.Add(doorBtn2);
             doorBtns.Add(doorBtn3);
-            numberOfDoorBtns = doorBtns.Count;
 
             doors_panel.SuspendLayout();
             SuspendLayout();
