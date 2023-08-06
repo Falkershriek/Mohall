@@ -5,9 +5,9 @@ namespace Mohall
     /// <summary>
     /// Class for the creation and management of the game statistics data(base).
     /// </summary>
-    public class Statistics
+    public class Statistic
     {
-        public Statistics()
+        public Statistic()
         {
             statisticsDB = new(@"StatisticsData.db");
             gamesCol = statisticsDB.GetCollection<GameEntry>("games");

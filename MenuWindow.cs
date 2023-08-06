@@ -19,7 +19,7 @@
         private readonly MenuButton back_to_menu_button = new();
         private readonly Panel statistics_panel = new();
 
-        private readonly Statistics gameStatistics = new();
+        private readonly Statistic gameStatistics = new();
 
         /// <summary>
         /// Adds the game entry to the statistics database.
