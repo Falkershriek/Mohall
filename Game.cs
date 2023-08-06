@@ -155,10 +155,7 @@
         /// Checks whether the player selected a door with a reward.
         /// </summary>
         /// <returns>True if player selected a door with a reward, false if player selected an empty door.</returns>
-        private bool DidPlayerWin()
-        {
-            return SelectedDoorNumber() == RewardDoorNumber();
-        }
+        private bool DidPlayerWin() => SelectedDoorNumber() == RewardDoorNumber();
 
         /// <summary>
         /// Randomly assigns reward to one of the Doors.

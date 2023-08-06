@@ -89,10 +89,7 @@ namespace Mohall
         /// </summary>
         /// <param name="door">Door button which's index is to be found.</param>
         /// <returns>Door button's index.</returns>
-        private int DoorBtnIndex(DoorBtn door)
-        {
-            return doorBtns.IndexOf(door);
-        }
+        private int DoorBtnIndex(DoorBtn door) => doorBtns.IndexOf(door);
 
         /// <summary>
         /// Updates the appearance of each door button depending on the door's properties.

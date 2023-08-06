@@ -63,9 +63,9 @@ namespace Mohall
                 TotalWinsWithoutSwap = TotalWins - TotalWinsAfterSwap;
                 SwapWinRatio = Ratio(TotalWinsAfterSwap, TotalGamesPlayedWithSwap);
                 NoSwapWinRatio = Ratio(TotalWinsWithoutSwap, TotalGamesPlayedWithNoSwap);
-                RewardsBehindDoor1 = gamesCol.Find(x => x.RewardDoor == 1).Count();
-                RewardsBehindDoor2 = gamesCol.Find(x => x.RewardDoor == 2).Count();
-                RewardsBehindDoor3 = gamesCol.Find(x => x.RewardDoor == 3).Count();
+                RewardsBehindDoor1 = gamesCol.Count(x => x.RewardDoor == 1);
+                RewardsBehindDoor2 = gamesCol.Count(x => x.RewardDoor == 2);
+                RewardsBehindDoor3 = gamesCol.Count(x => x.RewardDoor == 3);
             }
         }
     }
