@@ -44,6 +44,7 @@ namespace Mohall
         private string Ratio(int a, int b)
         {
             int gcd = Gcd(a, b);
+            gcd = (gcd == 0) ? 1 : gcd;
             return (a / gcd).ToString() + ":" + (b / gcd).ToString();
         }
 
