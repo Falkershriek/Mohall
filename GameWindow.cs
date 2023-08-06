@@ -214,18 +214,22 @@ namespace Mohall
                             BackColor = selectedDoorColor;
                             break;
                         case DoorBtnState.Empty:
+                            IsEnabled = false;
                             state = DoorBtnState.Empty;
                             BackColor = emptyDoorColor;
                             break;
                         case DoorBtnState.Wrong:
+                            IsEnabled = false;
                             state = DoorBtnState.Wrong;
                             BackColor = wrongDoorColor;
                             break;
                         case DoorBtnState.Missed:
+                            IsEnabled = false;
                             state = DoorBtnState.Missed;
                             BackColor = missedDoorColor;
                             break;
                         case DoorBtnState.Correct:
+                            IsEnabled = false;
                             state = DoorBtnState.Correct;
                             BackColor = correctDoorColor;
                             break;
@@ -243,13 +247,7 @@ namespace Mohall
             public bool IsEnabled
             {
                 get { return Enabled; }
-                set
-                {
-                    if (state == DoorBtnState.Default)
-                    {
-                        Enabled = value;
-                    }
-                }
+                set { Enabled = value; }
             }
 
             /// <summary>
