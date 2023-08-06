@@ -32,6 +32,10 @@ namespace Mohall
         public string SwapWinRatio { get; private set; } = "0:0";
         public string NoSwapWinRatio { get; private set; } = "0:0";
 
+        /// <summary>
+        /// Adds the given GameEntry to the game statistics.
+        /// </summary>
+        /// <param name="gameToAdd">Entry to be added to the statistics.</param>
         public void AddEntry(GameEntry gameToAdd)
         {
             gamesCol.Insert(gameToAdd);
