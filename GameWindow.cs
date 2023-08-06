@@ -64,6 +64,7 @@ namespace Mohall
         private void AddGameToDatabase()
         {
             MenuWindow menuWindow = (MenuWindow)(this.Owner);
+            game.GameEntry.SimulatedGame = false;
             menuWindow.AddGameToDatabase(game.GameEntry);
         }
 
