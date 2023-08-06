@@ -1,8 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-using System.Windows.Forms;
-using System.Xml.Linq;
-
-namespace Mohall
+﻿namespace Mohall
 {
     public class MenuWindow : Form
     {

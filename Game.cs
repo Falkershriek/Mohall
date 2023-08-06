@@ -1,6 +1,4 @@
-﻿using static Mohall.Game;
-
-namespace Mohall
+﻿namespace Mohall
 {
     /// <summary>
     /// Contains the logic of the Mohall game.
