@@ -3,25 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mohall", "Mohall.csproj", "{BEC992C0-B3B9-4C51-B1CA-CF5EF6405321}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{56BABBEA-3242-4077-8F9D-3271D3BE1EE6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4D634B3-E514-4B20-870C-9CA24E53E860}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BEC992C0-B3B9-4C51-B1CA-CF5EF6405321}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BEC992C0-B3B9-4C51-B1CA-CF5EF6405321}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BEC992C0-B3B9-4C51-B1CA-CF5EF6405321}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BEC992C0-B3B9-4C51-B1CA-CF5EF6405321}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {BE04A5BF-8ED9-4D24-9BC6-A5DA0334772C}
+		SolutionGuid = {E03220F9-A8F8-49F6-BF89-443439C78B8A}
 	EndGlobalSection
 EndGlobal
