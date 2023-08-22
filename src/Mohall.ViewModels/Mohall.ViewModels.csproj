@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <UseCommonOutputDirectory>true</UseCommonOutputDirectory>
+    <BaseOutputPath>..\..\bin</BaseOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Mohall.Game\Mohall.GameMode.csproj" />
+  </ItemGroup>
+
+</Project>

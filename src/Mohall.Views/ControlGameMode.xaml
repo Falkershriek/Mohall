@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="Mohall.Views.ControlGameMode"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Mohall.Views" xmlns:viewmodels="clr-namespace:Mohall.ViewModels;assembly=Mohall.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ViewModelGameMode}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <local:StyleConverter x:Key="StyleConverter"/>
+    </UserControl.Resources>
+    <Grid>
+
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                <Button Content="{Binding DoorButtonList[0].DoorNumber}" Command="{Binding SelectDoorCommand}" CommandParameter="1">
+                    <Button.Style>
+                        <MultiBinding Converter="{StaticResource StyleConverter}">
+                            <MultiBinding.Bindings>
+                                <Binding RelativeSource="{RelativeSource Self}"/>
+                                <Binding Path="DoorButtonList[0].DoorButtonStyle"/>
+                            </MultiBinding.Bindings>
+                        </MultiBinding>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="{Binding DoorButtonList[1].DoorNumber}" Command="{Binding SelectDoorCommand}" CommandParameter="2">
+                    <Button.Style>
+                        <MultiBinding Converter="{StaticResource StyleConverter}">
+                            <MultiBinding.Bindings>
+                                <Binding RelativeSource="{RelativeSource Self}"/>
+                                <Binding Path="DoorButtonList[1].DoorButtonStyle"/>
+                            </MultiBinding.Bindings>
+                        </MultiBinding>
+                    </Button.Style>
+                </Button>
+
+                <Button Content="{Binding DoorButtonList[2].DoorNumber}" Command="{Binding SelectDoorCommand}" CommandParameter="3">
+                    <Button.Style>
+                        <MultiBinding Converter="{StaticResource StyleConverter}">
+                            <MultiBinding.Bindings>
+                                <Binding RelativeSource="{RelativeSource Self}"/>
+                                <Binding Path="DoorButtonList[2].DoorButtonStyle"/>
+                            </MultiBinding.Bindings>
+                        </MultiBinding>
+                    </Button.Style>
+                </Button>
+
+            </StackPanel>
+
+            <TextBlock x:Name="game_instructions" Text="{Binding GameDirections}" TextWrapping="WrapWithOverflow" MaxWidth="{Binding ElementName=return_button, Path=ActualWidth}" TextAlignment="Center" Margin="0,20"/>
+            <Button x:Name="continue_button" Content="Continue" MinWidth="400" Width="Auto" Command="{Binding ContinueGameCommand}"/>
+            <Button x:Name="return_button" Content="Return to Menu" MinWidth="400" Width="Auto" Command="{Binding ReturnToMenuCommand}" CommandParameter="{Binding ElementName=MainWindow}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

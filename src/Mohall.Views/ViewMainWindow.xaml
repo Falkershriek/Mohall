@@ -1,0 +1,36 @@
+﻿<Window x:Name="MainWindow"
+        x:Class="Mohall.Views.ViewMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Mohall.Views"
+        xmlns:viewModels="clr-namespace:Mohall.ViewModels;assembly=Mohall.ViewModels"
+        mc:Ignorable="d"
+        Title="Mohall" MinHeight="200" MinWidth="200" SizeToContent="WidthAndHeight" ResizeMode="CanMinimize" SnapsToDevicePixels="True">
+    <Window.DataContext>
+        <viewModels:ViewModelMainWindow/>
+    </Window.DataContext>
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModels:ViewModelMainWindow}">
+            <Grid>
+                <StackPanel>
+                    <local:ControlMenu/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ViewModelGameMode}">
+            <Grid>
+                <StackPanel>
+                    <local:ControlGameMode/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <StackPanel Margin="20">
+            <ContentPresenter Content="{Binding}"/>
+            <Button x:Name="exit_button" Content="Exit Mohall" Width="Auto" Command="{Binding CloseWindowCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=MainWindow}"/>
+        </StackPanel>
+    </Grid>
+</Window>
