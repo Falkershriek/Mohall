@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,12 +11,10 @@ namespace Mohall.GameMode.Components
     /// <summary>
     /// Interface for accessing door data externally.
     /// </summary>
-    public interface IGameDoor
+    public interface IGameDoor : INotifyPropertyChanged
     {
         #region Events
-        public event EventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged() { }
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "") { }
         #endregion
 
         #region Properties
