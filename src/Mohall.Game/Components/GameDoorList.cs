@@ -38,7 +38,7 @@ namespace Mohall.GameMode.Components
         /// Find the number of the selected door.
         /// </summary>
         /// <returns>Door number, starting from 1. Returns -1 if no match is found.</returns>
-        public int SelectedDoorNumber()
+        internal int SelectedDoorNumber()
         {
             return FindDoorNumber(door => door.IsSelected);
         }
@@ -47,7 +47,7 @@ namespace Mohall.GameMode.Components
         /// Find the number of the door with the reward.
         /// </summary>
         /// <returns>Door number, starting from 1. Returns -1 if no match is found.</returns>
-        public int RewardDoorNumber()
+        internal int RewardDoorNumber()
         {
             return FindDoorNumber(door => door.HasReward);
         }
@@ -57,7 +57,7 @@ namespace Mohall.GameMode.Components
         /// </summary>
         /// <param name="match">Condition which the door must match.</param>
         /// <returns>Door number, starting from 1. Returns -1 if no match is found.</returns>
-        private int FindDoorNumber(Predicate<GameDoor> match)
+        internal int FindDoorNumber(Predicate<GameDoor> match)
         {
             int doorNumber = this.FindIndex(match);
             return (doorNumber >= 0) ? doorNumber + 1 : -1;
@@ -67,7 +67,7 @@ namespace Mohall.GameMode.Components
         /// Enable all doors if true, disable all doors if false.
         /// </summary>
         /// <param name="enableValue"></param>
-        public void EnableAllDoors(bool enableValue = true)
+        internal void EnableAllDoors(bool enableValue = true)
         {
             foreach (GameDoor door in this) door.IsEnabled = enableValue;
         }
@@ -75,7 +75,7 @@ namespace Mohall.GameMode.Components
         /// <summary>
         /// Open all doors.
         /// </summary>
-        public void OpenAllDoors()
+        internal void OpenAllDoors()
         {
             foreach (GameDoor door in this) door.IsOpen = true;
         }
@@ -83,7 +83,7 @@ namespace Mohall.GameMode.Components
         /// <summary>
         /// Deselect all doors.
         /// </summary>
-        public void DeselectAllDoors()
+        internal void DeselectAllDoors()
         {
             foreach (GameDoor door in this) door.IsSelected = false;
         }
@@ -91,7 +91,7 @@ namespace Mohall.GameMode.Components
         /// <summary>
         /// Reset all doors.
         /// </summary>
-        public void ResetAllDoors()
+        internal void ResetAllDoors()
         {
             foreach (GameDoor door in this) door.Reset();
             RandomlyAssignReward();
@@ -101,7 +101,7 @@ namespace Mohall.GameMode.Components
         /// Select the given door and deselects all other doors.
         /// </summary>
         /// <param name="doorNumber">The door to select.</param>
-        public void SelectDoor(int doorNumber)
+        internal void SelectDoor(int doorNumber)
         {
             for (int i = 0; i < this.Count; i++)
             {
@@ -113,7 +113,7 @@ namespace Mohall.GameMode.Components
         /// Open the given door.
         /// </summary>
         /// <param name="doorNumber">The door to open.</param>
-        public void OpenDoor(int doorNumber)
+        internal void OpenDoor(int doorNumber)
         {
             this[doorNumber - 1].IsOpen = true;
         }
@@ -148,7 +148,7 @@ namespace Mohall.GameMode.Components
         /// <summary>
         /// Randomly open one empty, unselected door.
         /// </summary>
-        public void OpenRandomDoor()
+        internal void OpenRandomDoor()
         {
             List<GameDoor> emptyUnselectedDoors = GetEmptyDoors(GetUnselectedDoors(this));
 

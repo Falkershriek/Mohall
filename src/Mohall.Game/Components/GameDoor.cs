@@ -101,7 +101,7 @@ namespace Mohall.GameMode.Components
         /// <summary>
         /// Reset the door.
         /// </summary>
-        public void Reset()
+        internal void Reset()
         {
             IsOpen = false;
             //IsEnabled = true;
@@ -112,7 +112,7 @@ namespace Mohall.GameMode.Components
         /// <summary>
         /// Toggle the selection status of the door.
         /// </summary>
-        public void ToggleSelection()
+        internal void ToggleSelection()
         {
             IsSelected = !IsSelected;
         }
