@@ -1,4 +1,5 @@
 using Mohall.GameMode.Components;
+using Mohall.Statistics;
 using System;
 using System.Windows.Documents;
 
@@ -22,23 +23,23 @@ namespace Mohall.GameMode
     public class Game
     {
         #region Fields
-
+        private readonly GameStatisticsEntry gameStatistics;
         #endregion
 
         #region Constructors
-        public Game(int numberOfGameDoors = 3)
-        {
-            Initialize(numberOfGameDoors);
-        }
-
-        /// <summary>
-        /// Initialize the game.
-        /// </summary>
-        /// <param name="numberOfGameDoors">Number of doors to create in the game.</param>
-        private void Initialize(int numberOfGameDoors = 3)
+        public Game(int numberOfGameDoors = 3, string playerName = "")
         {
             CurrentGameStage = GameStage.Stage1;
             GameDoorList = new(numberOfGameDoors);
+
+            gameStatistics = new();
+            SetStatisticsPlayerName(playerName);
+            SetGameStatisticsToDefault();
+        }
+
+        private void SetStatisticsPlayerName(string playerName)
+        {
+            gameStatistics.PlayerName = playerName;
         }
         #endregion
 
@@ -48,6 +49,28 @@ namespace Mohall.GameMode
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Write default values into the game statistics entry.
+        /// </summary>
+        private void SetGameStatisticsToDefault()
+        {
+            gameStatistics.SimulatedGame = false;
+            gameStatistics.PlayerSwapped = false;
+            gameStatistics.PlayerWon = false;
+            gameStatistics.RewardDoorNumber = GameDoorList.RewardDoorNumber();
+            gameStatistics.FirstChosenDoorNumber = -1;
+            gameStatistics.FinalChosenDoorNumber = -1;
+        }
+
+        /// <summary>
+        /// Gets statistics entry of the current game.
+        /// </summary>
+        /// <returns>Game statistics entry.</returns>
+        public IStatisticsEntry GetGameStatistics()
+        {
+            return gameStatistics;
+        }
+
         /// <summary>
         /// Select the door with the given door number.
         /// </summary>
@@ -84,6 +107,7 @@ namespace Mohall.GameMode
         {
             CurrentGameStage = GameStage.Stage1;
             GameDoorList.ResetAllDoors();
+            SetGameStatisticsToDefault();
         }
 
         /// <summary>
@@ -95,11 +119,11 @@ namespace Mohall.GameMode
             {
                 case GameStage.Stage1:
                     NewGame();
-                    //gameEntry.RewardDoor = RewardDoorNumber();
+                    gameStatistics.RewardDoorNumber = GameDoorList.RewardDoorNumber();
                     GameDoorList.EnableAllDoors(true);
                     break;
                 case GameStage.Stage2:
-                    //gameEntry.FirstChoice = SelectedDoorNumber();
+                    gameStatistics.FirstChosenDoorNumber = GameDoorList.SelectedDoorNumber();
                     GameDoorList.EnableAllDoors(false);
                     break;
                 case GameStage.Stage3:
@@ -107,12 +131,12 @@ namespace Mohall.GameMode
                     GameDoorList.EnableAllDoors(true);
                     break;
                 case GameStage.Stage4:
-                    //gameEntry.FinalChoice = SelectedDoorNumber();
-                    //gameEntry.PlayerSwapped = gameEntry.FirstChoice != gameEntry.FinalChoice;
+                    gameStatistics.FinalChosenDoorNumber = GameDoorList.SelectedDoorNumber();
+                    gameStatistics.PlayerSwapped = gameStatistics.FirstChosenDoorNumber != gameStatistics.FinalChosenDoorNumber;
                     GameDoorList.EnableAllDoors(false);
                     break;
                 case GameStage.Stage4_1:
-                    //gameEntry.SelectedDoorHasReward = DidPlayerWin();
+                    gameStatistics.PlayerWon = SelectedDoorHasReward();
                     GameDoorList.OpenAllDoors();
                     break;
                 default:

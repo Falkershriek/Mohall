@@ -8,4 +8,8 @@
     <BaseOutputPath>..\..\bin</BaseOutputPath>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Mohall.Statistics\Mohall.Statistics.csproj" />
+  </ItemGroup>
+
 </Project>

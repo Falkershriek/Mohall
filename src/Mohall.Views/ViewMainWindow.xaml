@@ -26,6 +26,13 @@
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ViewModelStatistics}">
+            <Grid>
+                <StackPanel>
+                    <local:ControlStatistics/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <StackPanel Margin="20">
