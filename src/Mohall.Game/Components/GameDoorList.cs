@@ -103,6 +103,8 @@ namespace Mohall.GameMode.Components
         /// <param name="doorNumber">The door to select.</param>
         internal void SelectDoor(int doorNumber)
         {
+            if (this[doorNumber - 1].IsEnabled == false) return;
+
             for (int i = 0; i < this.Count; i++)
             {
                 this[i].IsSelected = (i == doorNumber - 1);
