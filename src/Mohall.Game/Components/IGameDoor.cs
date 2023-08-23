@@ -13,10 +13,6 @@ namespace Mohall.GameMode.Components
     /// </summary>
     public interface IGameDoor : INotifyPropertyChanged
     {
-        #region Events
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "") { }
-        #endregion
-
         #region Properties
         /// <summary>
         /// This door is selected.

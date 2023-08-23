@@ -51,10 +51,6 @@ namespace Mohall.ViewModels
         /// </summary>
         public string GameDirections
         {
-            set
-            {
-                OnPropertyChanged();
-            }
             get
             {
                 if (game.CurrentGameStage == GameStage.Stage4_1) return (game.SelectedDoorHasReward()) ? gameDirections["victory"] : gameDirections["defeat"];
@@ -85,7 +81,7 @@ namespace Mohall.ViewModels
         public void ContinueGame(string bla)
         {
             game.AdvanceGameStage();
-            GameDirections = "";
+            OnPropertyChanged(nameof(GameDirections));
         }
 
         private ICommand? selectDoorCommand;
