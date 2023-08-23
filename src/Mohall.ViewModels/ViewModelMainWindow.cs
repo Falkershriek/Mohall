@@ -1,3 +1,4 @@
+using Mohall.Statistics;
 using Mohall.ViewModels.Commands;
 using System;
 using System.Windows;
@@ -7,20 +8,37 @@ namespace Mohall.ViewModels
 {
     public class ViewModelMainWindow : ViewModelBase, IWindowControlCommands
     {
+        #region Fields
+        #endregion
+
         #region Constructors
         public ViewModelMainWindow()
         {
             Menu = new(this);
             GameMode = new(this);
+            Statistics = new(this);
         }
         #endregion
 
         #region Properties
         public ViewModelMenu Menu { get; set; }
         public ViewModelGameMode GameMode { get; set; }
+        public ViewModelStatistics Statistics { get; set; }
         #endregion
 
         #region Commands
+        private ICommand? openStatisticsCommand;
+        public ICommand OpenStatisticsCommand => openStatisticsCommand ??= new RelayCommandHandler<IWindowDataContext>(OpenStatistics);
+
+        /// <summary>
+        /// Launch the Mohall game window.
+        /// </summary>
+        /// <param name="window">Mohall main window data context.</param>
+        public void OpenStatistics(IWindowDataContext window)
+        {
+            window.DataContext = Statistics;
+        }
+
         private ICommand? playMohallCommand;
         public ICommand PlayMohallCommand => playMohallCommand ??= new RelayCommandHandler<IWindowDataContext>(PlayMohall);
 

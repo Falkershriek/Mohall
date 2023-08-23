@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mohall.Game\Mohall.GameMode.csproj" />
+    <ProjectReference Include="..\Mohall.Statistics\Mohall.Statistics.csproj" />
   </ItemGroup>
 
 </Project>

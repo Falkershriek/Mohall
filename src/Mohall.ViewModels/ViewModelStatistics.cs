@@ -1,34 +1,46 @@
-﻿using Mohall.Statistics;
+﻿using Mohall.GameMode;
+using Mohall.Statistics;
 using Mohall.ViewModels.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace Mohall.ViewModels
 {
-    public class ViewModelMenu : ViewModelBase, IWindowControlCommands
+    public class ViewModelStatistics : ViewModelBase, IWindowControlCommands
     {
+        #region Fields
+        private readonly ViewModelMainWindow menuContextReference;
+        #endregion
+
         #region Constructors
-        public ViewModelMenu(ViewModelMainWindow menu)
+        public ViewModelStatistics(ViewModelMainWindow menu)
         {
+            menuContextReference = menu;
+            GlobalStatistics = new();
         }
         #endregion
 
-        #region Methods
+        #region Properties
+        public MohallStatistics GlobalStatistics { get; internal set; }
+        #endregion
+
+        #region Commands
+        private ICommand? returnToMenuCommand;
+        public ICommand ReturnToMenuCommand => returnToMenuCommand ??= new RelayCommandHandler<IWindowDataContext>(ReturnToMenu);
+
         /// <summary>
         /// Return to the Mohall main menu.
         /// </summary>
         /// <param name="window">Mohall main window data context.</param>
         public void ReturnToMenu(IWindowDataContext window)
         {
+            window.DataContext = menuContextReference;
         }
-        #endregion
 
-        #region Commands
         private ICommand? closeWindowCommand;
         public ICommand CloseWindowCommand => closeWindowCommand ??= new RelayCommandHandler<ICloseable>(ExitMohall);
 

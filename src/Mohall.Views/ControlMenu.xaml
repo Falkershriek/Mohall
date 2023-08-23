@@ -10,7 +10,7 @@
         <StackPanel>
             <Button x:Name="play_button" Content="Play Mohall" Command="{Binding PlayMohallCommand}" CommandParameter="{Binding ElementName=MainWindow}"/>
             <Button x:Name="simulate_button" Content="Simulate Games" IsEnabled="False"/>
-            <Button x:Name="statistics_button" Content="Statistics" IsEnabled="False"/>
+            <Button x:Name="statistics_button" Content="Statistics" Command="{Binding OpenStatisticsCommand}" CommandParameter="{Binding ElementName=MainWindow}"/>
         </StackPanel>
 
     </Grid>

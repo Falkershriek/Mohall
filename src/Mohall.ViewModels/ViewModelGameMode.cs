@@ -39,7 +39,7 @@ namespace Mohall.ViewModels
         {
             menuContextReference = menu;
             int numberOfDoors = 3;
-            game = new(numberOfDoors);
+            game = new(numberOfDoors, "Player");
 
             DoorButtonList = new(numberOfDoors, game.GameDoorList);
         }
@@ -82,6 +82,8 @@ namespace Mohall.ViewModels
         {
             game.AdvanceGameStage();
             OnPropertyChanged(nameof(GameDirections));
+
+            if (game.CurrentGameStage == GameStage.Stage4_1) menuContextReference.Statistics.GlobalStatistics.AddEntry(game.GetGameStatistics());
         }
 
         private ICommand? selectDoorCommand;
