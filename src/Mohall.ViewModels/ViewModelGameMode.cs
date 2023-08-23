@@ -85,7 +85,7 @@ namespace Mohall.ViewModels
         public void ContinueGame(string bla)
         {
             game.AdvanceGameStage();
-            GameDirections = "";
+            GameDirections = ""; // to be implemented differently later
         }
 
         private ICommand? selectDoorCommand;
