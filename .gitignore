@@ -2,6 +2,7 @@
 [Bb]in/
 .nuget/
 _ReSharper.*
+.vs/
 packages/
 artifacts/
 *.user
